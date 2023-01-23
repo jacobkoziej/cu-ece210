@@ -32,3 +32,8 @@ C = [
 	T, F;
 	F, T;
 ];
+
+
+%% Cruelty
+B_mean     = mean(B);
+C_row_mean = mean(C, 2);
