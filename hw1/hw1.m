@@ -37,3 +37,13 @@ C = [
 %% Cruelty
 B_mean     = mean(B);
 C_row_mean = mean(C, 2);
+
+
+%% Odd Types
+% regular matrix addition
+T + F;
+% cool that you can add to each element
+T + 1;
+% looks like we assume that if we have a dimension mismatch that the
+% missing elements are zero
+C + A;
