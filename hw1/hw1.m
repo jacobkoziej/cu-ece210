@@ -47,3 +47,14 @@ T + 1;
 % looks like we assume that if we have a dimension mismatch that the
 % missing elements are zero
 C + A;
+
+
+%% Not What It Seems...
+funky = @(k) sum(linspace(0, 10, k) .^ 2) / k;
+
+% it looks like we've found a convoluted way to approximate 100/3
+k_3       = funky(3);
+k_5       = funky(5);
+k_10      = funky(10);
+k_300     = funky(300);
+k_1000000 = funky(1000000);
