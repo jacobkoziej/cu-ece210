@@ -8,6 +8,10 @@ close;
 close all;
 
 
+%% Shooting the Schmidt
+% testing </3
+
+
 %% De-Gauss, Re-Gauss
 x  = linspace(0, 2*pi, 1000);
 y1 = sin(x);
