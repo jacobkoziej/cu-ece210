@@ -74,3 +74,44 @@ b_o('Chebyshev Type II')  = {b};
 a_o('Chebyshev Type II')  = {a};
 n_o('Chebyshev Type II')  = n;
 Wn_o('Chebyshev Type II') = {Wn};
+
+
+%% 2
+i     = 1;
+plots = length(keys(n_o)');
+
+figure;
+
+for k = keys(n_o)'
+	b = b_o(k);
+	b = b{1};
+	a = a_o(k);
+	a = a{1};
+
+	[h, w] = freqz(b, a);
+
+	H_dB = 20*log10(h);
+	H_deg = rad2deg(unwrap(angle(h)));
+
+	subplot(plots, 2, i);
+	plot(w, H_dB);
+	title(strcat('Magnitude Response (', k, ')'));
+	xlabel('Frequency [rad]');
+	ylabel('|H| [dB]');
+	xlim([0, pi]);
+	xticks([0, pi/2, pi]);
+	xticklabels({'0', '\pi/2', '\pi'})
+
+	i = i + 1;
+
+	subplot(plots, 2, i);
+	plot(w, H_deg);
+	title(strcat('Phase Response (', k, ')'));
+	xlabel('Frequency [rad]');
+	ylabel('Phase [deg]');
+	xlim([0, pi]);
+	xticks([0, pi/2, pi]);
+	xticklabels({'0', '\pi/2', '\pi'})
+
+	i = i + 1;
+end
