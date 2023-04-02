@@ -133,3 +133,32 @@ for k = keys(n_o)'
 
 	y_o(k) = {y};
 end
+
+
+%% 4
+n = length(y); 
+
+i     = 1;
+plots = length(keys(n_o)');
+
+figure;
+sgtitle('Fourier Transform of Gaussian Noise');
+
+for k = keys(y_o)'
+	y = y_o(k);
+	y = y{1};
+
+	S = fft(y, n);
+	S = fftshift(abs(S)) / n;
+
+	f = f_s .* (-n/2:n/2) ./ n;
+	f = f(2:end);
+
+	subplot(plots, 1, i);
+	plot(f, S);
+	title(k);
+	xlabel('Frequency [Hz]');
+	ylabel('|S|');
+
+	i = i + 1;
+end
