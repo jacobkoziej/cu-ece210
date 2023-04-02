@@ -115,3 +115,21 @@ for k = keys(n_o)'
 
 	i = i + 1;
 end
+
+
+%% 3
+s = 2;
+
+noise = wgn(f_s*s, 1, 1);
+
+y_o = dictionary;
+
+for k = keys(n_o)'
+	b = b_o(k);
+	b = b{1};
+	a = a_o(k);
+	a = a{1};
+	y = filter(b, a, noise);
+
+	y_o(k) = {y};
+end
