@@ -52,3 +52,25 @@ val = int(dot(F(r(1), r(2), r(3)), diff(r, t)), t, -pi, pi);
 figure;
 title('3');
 fplot(val, a, [-3, 1]);
+
+
+%% It Ain't Magic
+
+%% 1
+syms x, y;
+
+f(x, y) = 1 - x^2 - y^2;
+
+mF = matlabFunction(f);
+
+
+%% 2
+tic;
+int(int(mF, y, [-sqrt(1 - x^2), sqrt(1 - x^2)]), x, 0, 1)
+toc;
+% Elapsed time is 0.052290 seconds.
+
+tic;
+% there will be no trapz() approximation for my sanity <3
+toc;
+% Elapsed time is 0.000030 seconds. <-- see how much faster this is!
